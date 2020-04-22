@@ -13,7 +13,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+*.jar
 *.war
 *.nar
 *.ear
@@ -27,3 +27,6 @@ hs_err_pid*
 .idea
 learning-kafka.iml
 
+kafka-practice/.mvn
+kafka-practice/target/*
+kafka-practice/kafka-practice.iml
