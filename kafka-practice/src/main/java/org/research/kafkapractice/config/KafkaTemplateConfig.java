@@ -8,6 +8,8 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
+import java.util.Map;
+
 /**
  * @fileName: KafkaTemplateConfig.java
  * @description: KafkaTemplateConfig.java类说明
@@ -22,7 +24,8 @@ public class KafkaTemplateConfig {
 
     @Bean
     public ProducerFactory<String, String> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(kafkaProperties.buildProducerProperties());
+        Map<String, Object> stringObjectMap = kafkaProperties.buildProducerProperties();
+        return new DefaultKafkaProducerFactory<>(stringObjectMap);
     }
 
     @Bean
