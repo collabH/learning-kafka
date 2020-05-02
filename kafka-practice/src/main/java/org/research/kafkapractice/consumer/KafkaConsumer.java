@@ -1,8 +1,12 @@
 package org.research.kafkapractice.consumer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.listener.KafkaListenerErrorHandler;
+import org.springframework.kafka.listener.ListenerExecutionFailedException;
+import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -14,7 +18,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @date: 2020-04-22 11:17
  */
 @Component
-public class KafkaConsumer {
+@Slf4j
+public class KafkaConsumer implements KafkaListenerErrorHandler {
 
     private static final AtomicBoolean INIT_CONSUMER = new AtomicBoolean(true);
 
@@ -32,8 +37,11 @@ public class KafkaConsumer {
 //        long offset = offsetAndTimestampMap.get(partition0).offset();
 //        consumer.seek(partition0, offset);
 //
-        System.out.println(data.value());
-
+        log.info(data.value());
     }
 
+    @Override
+    public Object handleError(Message<?> message, ListenerExecutionFailedException exception) {
+        return null;
+    }
 }

@@ -1,5 +1,6 @@
 package org.research.kafkapractice.producer;
 
+import org.research.kafkapractice.consumer.OriginalConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -17,8 +18,13 @@ public class MultiProducer {
     private KafkaTemplate<String, String> kafkaTemplate;
 
 
-    public void send1() {
-        kafkaTemplate.send("test-topic", "hello world1");
+    public void send1() throws InterruptedException {
+        while (true) {
+            OriginalConsumer.CONCURRENT_CONUSMER.submit(() -> {
+                kafkaTemplate.send("test-topic", "hello world1");
+            });
+            Thread.sleep(100);
+        }
     }
 
     public void send2() {
