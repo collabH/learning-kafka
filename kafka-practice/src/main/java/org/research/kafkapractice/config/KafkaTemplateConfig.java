@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
@@ -26,6 +27,11 @@ public class KafkaTemplateConfig {
     public ProducerFactory<String, String> producerFactory() {
         Map<String, Object> stringObjectMap = kafkaProperties.buildProducerProperties();
         return new DefaultKafkaProducerFactory<>(stringObjectMap);
+    }
+
+    public ConcurrentKafkaListenerContainerFactory<String, String> containerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        return factory;
     }
 
     @Bean

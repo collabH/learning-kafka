@@ -50,14 +50,14 @@ public class KafkaPracticeApplication implements CommandLineRunner {
 //        originalProducer.syncSendMsg("test Last Partitioner", "learning-kafka");
 
 
-        //  originalConsumer.consumer();
+          originalConsumer.consumer();
 //        originalConsumer.concurrentConsumer();
 //        originalConsumer.asyncCommitOffsetConsumer();
 //        originalConsumer.combinationCommitOffset();
 
 //        originalConsumer.reblaceListenerConsumer();
 //        shutDownHookConsumer.shutDownConsumer();
-        standAloneConsumer.consumer();
+//        standAloneConsumer.consumer();
     }
 
 

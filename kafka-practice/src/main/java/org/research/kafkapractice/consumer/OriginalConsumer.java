@@ -61,6 +61,7 @@ public class OriginalConsumer implements DisposableBean {
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         //关闭自动提交offset
         properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+        properties.put(ConsumerConfig.CLIENT_ID_CONFIG, "origin-consumer");
         return properties;
     }
 
