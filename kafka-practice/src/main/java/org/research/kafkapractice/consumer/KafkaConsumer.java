@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author: by echo huang
  * @date: 2020-04-22 11:17
  */
-@Component
+//@Component
 @Slf4j
 public class KafkaConsumer implements KafkaListenerErrorHandler {
 

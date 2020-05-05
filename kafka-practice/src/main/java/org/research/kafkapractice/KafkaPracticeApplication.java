@@ -1,5 +1,6 @@
 package org.research.kafkapractice;
 
+import org.research.kafkapractice.consumer.BroadCastConsumer;
 import org.research.kafkapractice.consumer.OriginalConsumer;
 import org.research.kafkapractice.consumer.ShutDownHookConsumer;
 import org.research.kafkapractice.consumer.StandAloneConsumer;
@@ -33,6 +34,9 @@ public class KafkaPracticeApplication implements CommandLineRunner {
     @Autowired
     private StandAloneConsumer standAloneConsumer;
 
+    @Autowired
+    private BroadCastConsumer castConsumer;
+
     public static void main(String[] args) {
         SpringApplication.run(KafkaPracticeApplication.class, args);
     }
@@ -50,7 +54,7 @@ public class KafkaPracticeApplication implements CommandLineRunner {
 //        originalProducer.syncSendMsg("test Last Partitioner", "learning-kafka");
 
 
-          originalConsumer.consumer();
+//        originalConsumer.consumer();
 //        originalConsumer.concurrentConsumer();
 //        originalConsumer.asyncCommitOffsetConsumer();
 //        originalConsumer.combinationCommitOffset();
@@ -58,6 +62,7 @@ public class KafkaPracticeApplication implements CommandLineRunner {
 //        originalConsumer.reblaceListenerConsumer();
 //        shutDownHookConsumer.shutDownConsumer();
 //        standAloneConsumer.consumer();
+        castConsumer.consumer();
     }
 
 
