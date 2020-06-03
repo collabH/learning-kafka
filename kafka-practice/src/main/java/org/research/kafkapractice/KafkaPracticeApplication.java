@@ -5,6 +5,7 @@ import org.research.kafkapractice.consumer.OriginalConsumer;
 import org.research.kafkapractice.consumer.ShutDownHookConsumer;
 import org.research.kafkapractice.consumer.StandAloneConsumer;
 import org.research.kafkapractice.parititioner.PartitionerProducer;
+import org.research.kafkapractice.producer.InterceptorProducer;
 import org.research.kafkapractice.producer.MultiProducer;
 import org.research.kafkapractice.producer.OriginalProducer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class KafkaPracticeApplication implements CommandLineRunner {
     @Autowired
     private BroadCastConsumer castConsumer;
 
+    @Autowired
+    private InterceptorProducer interceptorProducer;
+
     public static void main(String[] args) {
         SpringApplication.run(KafkaPracticeApplication.class, args);
     }
@@ -62,7 +66,8 @@ public class KafkaPracticeApplication implements CommandLineRunner {
 //        originalConsumer.reblaceListenerConsumer();
 //        shutDownHookConsumer.shutDownConsumer();
 //        standAloneConsumer.consumer();
-        castConsumer.consumer();
+//        castConsumer.consumer();
+        interceptorProducer.send();
     }
 
 

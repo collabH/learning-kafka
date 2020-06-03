@@ -17,14 +17,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author: by echo huang
  * @date: 2020-04-22 11:17
  */
-//@Component
+@Component
 @Slf4j
 public class KafkaConsumer implements KafkaListenerErrorHandler {
 
     private static final AtomicBoolean INIT_CONSUMER = new AtomicBoolean(true);
 
 
-    @KafkaListener(topics = "test-topic", concurrency = "4")
+    @KafkaListener(topics = "test", concurrency = "4")
     public void recv(ConsumerRecord<String, String> data, Consumer<String, String> consumer) {
 //        Map<TopicPartition, Long> topicPartitionTimeStampMap = new HashMap<>();
 //
